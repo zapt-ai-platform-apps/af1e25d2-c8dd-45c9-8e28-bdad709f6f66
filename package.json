@@ -12,7 +12,6 @@
         "@sentry/browser": "^8.41.0",
         "solid-js": "^1.8.22",
         "@solidjs/router": "^0.8.4",
-        "solid-i18n": "^0.3.0",
         "@supabase/auth-ui-solid": "^0.3.8",
         "@supabase/auth-ui-shared": "^0.1.8",
         "@zapt/zapt-js": "^1.0.6"
