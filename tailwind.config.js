@@ -1,4 +1,6 @@
-module.exports = {
+import tailwindcssRtl from 'tailwindcss-rtl';
+
+export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,6 +9,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('tailwindcss-rtl'),
+    tailwindcssRtl,
   ],
 };
