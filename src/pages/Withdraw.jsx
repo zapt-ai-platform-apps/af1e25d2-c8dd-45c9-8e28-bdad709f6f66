@@ -1,29 +1,32 @@
-import { createSignal } from 'solid-js';
+import { createSignal, Show } from 'solid-js';
 import { createEvent } from '../supabaseClient';
 
 function Withdraw() {
   const [amount, setAmount] = createSignal('');
   const [loading, setLoading] = createSignal(false);
   const [message, setMessage] = createSignal('');
+  const [error, setError] = createSignal(null);
 
   const handleWithdraw = async (e) => {
     e.preventDefault();
+    if (loading()) return;
     setLoading(true);
     setMessage('');
+    setError(null);
     try {
-      const result = await createEvent('withdraw', { amount: parseFloat(amount()) });
+      await createEvent('withdraw', { amount: parseFloat(amount()) });
       setMessage('تم تقديم طلب السحب بنجاح.');
       setAmount('');
     } catch (error) {
-      console.error('خطأ في عملية السحب:', error);
-      setMessage('حدث خطأ أثناء عملية السحب.');
+      console.error('Error during withdrawal:', error);
+      setError('حدث خطأ أثناء عملية السحب. الرجاء المحاولة مرة أخرى.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4 py-8 h-full">
       <h1 class="text-2xl font-bold mb-4 text-purple-600 text-center">السحب عبر PayPal</h1>
       <form onSubmit={handleWithdraw} class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
         <div class="mb-4">
@@ -45,7 +48,12 @@ function Withdraw() {
         >
           {loading() ? 'جارٍ المعالجة...' : 'طلب السحب'}
         </button>
-        {message() && <p class="mt-4 text-center text-green-600">{message()}</p>}
+        <Show when={message()}>
+          <p class="mt-4 text-center text-green-600">{message()}</p>
+        </Show>
+        <Show when={error()}>
+          <p class="mt-4 text-center text-red-600">{error()}</p>
+        </Show>
       </form>
     </div>
   );

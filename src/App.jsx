@@ -9,6 +9,7 @@ import Withdraw from './pages/Withdraw';
 import AdminPanel from './pages/AdminPanel';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import { supabase } from './supabaseClient';
 
 function App() {
@@ -42,18 +43,21 @@ function App() {
   })
 
   return (
-    <div class="min-h-screen bg-gray-100">
+    <div class="h-full bg-gray-100 flex flex-col">
       <Show when={user()}>
         <Navbar user={user()} />
-        <Routes>
-          <Route path="/" component={Home} />
-          <Route path="/daily-bonus" component={DailyBonus} />
-          <Route path="/tasks" component={Tasks} />
-          <Route path="/ads" component={Ads} />
-          <Route path="/luck-game" component={LuckGame} />
-          <Route path="/withdraw" component={Withdraw} />
-          <Route path="/admin" component={AdminPanel} />
-        </Routes>
+        <div class="flex-grow">
+          <Routes>
+            <Route path="/" component={Home} />
+            <Route path="/daily-bonus" component={DailyBonus} />
+            <Route path="/tasks" component={Tasks} />
+            <Route path="/ads" component={Ads} />
+            <Route path="/luck-game" component={LuckGame} />
+            <Route path="/withdraw" component={Withdraw} />
+            <Route path="/admin" component={AdminPanel} />
+          </Routes>
+        </div>
+        <Footer />
       </Show>
       <Show when={!user()}>
         <Routes>

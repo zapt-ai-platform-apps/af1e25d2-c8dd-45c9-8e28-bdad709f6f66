@@ -19,19 +19,19 @@ function Navbar(props) {
             </NavLink>
           </div>
           <div class="flex items-center space-x-4">
-            <NavLink href="/daily-bonus" class="text-gray-700 hover:text-purple-600">
+            <NavLink href="/daily-bonus" class="text-gray-700 hover:text-purple-600 cursor-pointer">
               المكافأة اليومية
             </NavLink>
-            <NavLink href="/tasks" class="text-gray-700 hover:text-purple-600">
+            <NavLink href="/tasks" class="text-gray-700 hover:text-purple-600 cursor-pointer">
               المهام
             </NavLink>
-            <NavLink href="/ads" class="text-gray-700 hover:text-purple-600">
+            <NavLink href="/ads" class="text-gray-700 hover:text-purple-600 cursor-pointer">
               الإعلانات
             </NavLink>
-            <NavLink href="/luck-game" class="text-gray-700 hover:text-purple-600">
+            <NavLink href="/luck-game" class="text-gray-700 hover:text-purple-600 cursor-pointer">
               لعبة الحظ
             </NavLink>
-            <NavLink href="/withdraw" class="text-gray-700 hover:text-purple-600">
+            <NavLink href="/withdraw" class="text-gray-700 hover:text-purple-600 cursor-pointer">
               السحب
             </NavLink>
             <button
